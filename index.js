@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let startRotate = null;
     const dropDuration = 500;
     const scaleDuration = 500;
-    const rollDuration = 500;
-    const rotateDuration = 500;
+    const rollDuration = 1000;
+    const rotateDuration = 1000;
     const initialScale = 0.5;
     const finalScale = 1.0;
     const initialSecondTitleY = -50;
@@ -63,6 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
             startScale = null;
             requestAnimationFrame(roll);
             requestAnimationFrame(() => rotateElement(pic1, -20));
+            requestAnimationFrame(() => rotateElement(pic2, 20));
+            requestAnimationFrame(() => rotateElement(pic3, 20));
+            requestAnimationFrame(() => rotateElement(pic4, -20));
         }
     };
 

@@ -41,7 +41,7 @@ body {
     width: 320px;
     height: 427px;
     background: #FFEEC1;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .banner__info {
