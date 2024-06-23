@@ -41,11 +41,14 @@ body {
     width: 320px;
     height: 427px;
     background: #FFEEC1;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 .banner__info {
+    position: absolute;
+    z-index: 10;
     margin-top: 50px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 5.04px;
@@ -82,30 +85,31 @@ body {
 
 .banner__pic1 {
     z-index: 1;
-    top: 100px;
-    width: calc(272.32px * 0.78);
-    height: calc(190.78px * 0.78);
+    width: 272.32px;
+    height: 190.78px;
+    top: 131px;
+    left: -76px;
 }
 
 .banner__pic2 {
     z-index: 2;
-    top: 127px;
-    left: 99px;
-    width: calc(272.32px * 0.81);
-    height: calc(190.78px * 0.81);
+    width: 235.32px;
+    height: 220.78px;
+    top: 143.56px;
+    left: 124.73px;
 }
 
 .banner__pic3 {
     z-index: 1;
-    width: calc(185.05px * 0.64);
-    height: calc(157.24px * 0.64);
-    top: 278.31px;
+    width: 185.05px;
+    height: 157.24px;
+    top: 276.31px;
     left: 200.69px;
 }
 
 .banner__pic4 {
-    width: 251.28px;
-    height: 213.51px;
-    top: 226px;
-    left: 1px;
+    width: 219.28px;
+    height: 118.51px;
+    top: 345.16px;
+    left: 36.65px;
 }

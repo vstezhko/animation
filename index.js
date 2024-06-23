@@ -8,14 +8,20 @@ document.addEventListener('DOMContentLoaded', () => {
     h1.style.transform = `translateX(-100%)`
 
     const pic1 = document.querySelector('.banner__pic1');
+    const initialPic1Angle = -12.76
+    pic1.style.transform = `rotate(${initialPic1Angle}deg)`;
     const pic2 = document.querySelector('.banner__pic2');
+    const initialPic2Angle = 6.43
+    pic2.style.transform = `rotate(${initialPic2Angle}deg)`;
     const pic3 = document.querySelector('.banner__pic3');
     const pic4 = document.querySelector('.banner__pic4');
+    const initialPic4Angle = 114.98
+    pic4.style.transform = `rotate(${initialPic4Angle}deg)`;
+
 
     let startDrop = null;
     let startScale = null;
     let startRoll = null;
-    let startRotate = null;
     const dropDuration = 500;
     const scaleDuration = 500;
     const rollDuration = 1000;
@@ -62,10 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             startScale = null;
             requestAnimationFrame(roll);
-            requestAnimationFrame(() => rotateElement(pic1, -20));
-            requestAnimationFrame(() => rotateElement(pic2, 20));
-            requestAnimationFrame(() => rotateElement(pic3, 20));
-            requestAnimationFrame(() => rotateElement(pic4, -20));
+            requestAnimationFrame(() => rotateElement(pic1, -20, initialPic1Angle));
+            requestAnimationFrame(() => rotateElement(pic2, 30, initialPic2Angle));
+            requestAnimationFrame(() => rotateElement(pic3, -20, 0));
+            requestAnimationFrame(() => rotateElement(pic4, 30, initialPic4Angle));
         }
     };
 
@@ -86,16 +92,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const rotateElement = (element, rotationAngle) => {
-        if (!startRotate) startRotate = performance.now();
+    const rotateElement = (element, rotationAngle, initialAngle) => {
+        let startRotate = null;
+
         const rotate = (timestamp) => {
+            if (!startRotate) startRotate = timestamp;
             const progress = timestamp - startRotate;
 
             let currentAngle;
             if (progress < rotateDuration / 2) {
-                currentAngle = rotationAngle * (progress / (rotateDuration / 2));
+                currentAngle = initialAngle + rotationAngle * (progress / (rotateDuration / 2));
             } else {
-                currentAngle = rotationAngle * (2 - (progress / (rotateDuration / 2)));
+                currentAngle = initialAngle + rotationAngle * (2 - (progress / (rotateDuration / 2)));
             }
 
             element.style.transform = `rotate(${currentAngle}deg)`;
@@ -104,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 requestAnimationFrame(rotate);
             } else {
                 startRotate = null;
+                element.style.transform = `rotate(${initialAngle}deg)`;
             }
         };
 
